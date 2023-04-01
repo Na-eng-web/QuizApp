@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Login from "./componant/Login";
+import Quiz from "./componant/quiz";
+import Final from "./componant/Final";
+import { Box } from "@chakra-ui/react";
 
-function App() {
+const App = () => {
+  const [user, setUser] = useState("");
+  const [screen, setScreen] = useState(0);
+  const [Score, setScore] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Box h={"100vh"} bg={"#146C94"}>
+        {screen === 0 && (
+          <Login user={user} setUser={setUser} setScreen={setScreen} />
+        )}
+        {screen === 1 && (
+          <Quiz
+            user={user}
+            setScore={setScore}
+            Score={Score}
+            setScreen={setScreen}
+          />
+        )}
+        {screen === 2 && <Final Score={Score} />}
+        {console.log(user)}
+      </Box>
+    </>
   );
-}
+};
 
 export default App;
