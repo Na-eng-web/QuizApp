@@ -24,7 +24,6 @@ const App = () => {
           />
         )}
         {screen === 2 && <Final Score={Score} />}
-        {console.log(user)}
       </Box>
     </>
   );

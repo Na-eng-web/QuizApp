@@ -13,11 +13,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const Login = ({ user, setUser, setScreen }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   return (
     <>
       <Flex width="full" align="center" justifyContent="center">

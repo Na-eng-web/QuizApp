@@ -1,0 +1,88 @@
+/* .final {
+  background-color: rgb(132, 156, 148);
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+.final::before {
+  content: " ";
+  position: absolute;
+  background-color: blue;
+  height: 100%;
+  width: 100%;
+  animation: example 5s linear infinite;
+}
+.final::after {
+  inset: 5px;
+  content: " ";
+  position: absolute;
+  background-color: rgb(181, 197, 92);
+  z-index: 1;
+}
+
+@keyframes example {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+/* html {
+  height: 100%;
+  background: #223;
+  display: grid;
+  place-items: center;
+} */
+
+.final {
+  text-align: center;
+  font-size: 10rem;
+  --border-size: 2rem;
+  --border-angle: 0turn;
+  width: 100%;
+  height: 100%;
+  background-image: conic-gradient(
+      from var(--border-angle),
+      #213,
+      #112 50%,
+      #213
+    ),
+    conic-gradient(
+      from var(--border-angle),
+      transparent 20%,
+      orange,
+      red,
+      blue,
+      green
+    );
+  background-size: calc(100% - (var(--border-size) * 2))
+      calc(100% - (var(--border-size) * 2)),
+    cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-animation: bg-spin 3s linear infinite;
+  animation: bg-spin 5s linear infinite;
+}
+@-webkit-keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+@keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+.box:hover {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}

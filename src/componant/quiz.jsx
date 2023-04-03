@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import problem from "../problem";
 import { Box, Button, Grid, GridItem, Heading, Text } from "@chakra-ui/react";
+import CountdownTimer from "./CountDownTImer";
 
 const Quiz = ({ user, setScore, Score, setScreen }) => {
-  const [time, setTime] = useState(0);
   const [problemNumber, setproblemNumber] = useState(0);
-  useEffect(() => {
-    let a = setInterval(() => {
-      setTime((time) => time + 1);
-    }, 1000);
-  }, []);
+  const Time = new Date().getTime() + 120000;
 
   return (
     <Box display={"flex"} justifyContent={"center"} p={"10"}>
@@ -30,7 +26,7 @@ const Quiz = ({ user, setScore, Score, setScreen }) => {
           textAlign={"Center"}
           alignContent={"center"}
         >
-          {time}
+          {<CountdownTimer setScreen={setScreen} targetDate={Time} />}
         </GridItem>
 
         <GridItem p={"4"} w="100%" bg="blue.500" colSpan={6}>
