@@ -5,6 +5,8 @@ import CountdownTimer from "./CountDownTImer";
 
 const Quiz = ({ user, setScore, Score, setScreen }) => {
   const [problemNumber, setproblemNumber] = useState(0);
+  const [color, setcolor] = useState(null);
+
   const Time = new Date().getTime() + 120000;
 
   return (
@@ -49,7 +51,7 @@ const Quiz = ({ user, setScore, Score, setScreen }) => {
           {problem[problemNumber].opction.map((e, index) => (
             <Text
               cursor={"pointer"}
-              bg={"whiteAlpha.600"}
+              bg={color === index ? "green.300" : "whiteAlpha.600"}
               w={"40%"}
               m={2}
               p={4}
@@ -61,6 +63,7 @@ const Quiz = ({ user, setScore, Score, setScreen }) => {
                 if (e === problem[problemNumber].ans) {
                   setScore(Score + 10);
                 }
+                setcolor(index);
               }}
               key={index}
             >
@@ -83,6 +86,7 @@ const Quiz = ({ user, setScore, Score, setScreen }) => {
               problemNumber < 4
                 ? setproblemNumber(problemNumber + 1)
                 : setScreen(2);
+              setcolor("");
             }}
           >
             {problemNumber < 4 ? "Next" : "Submit"}
